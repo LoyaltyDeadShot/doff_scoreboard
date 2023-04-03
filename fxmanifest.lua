@@ -5,7 +5,7 @@ game 'gta5'
 author 'DoFF'
 description 'DoFF Scoreboard for ESX Legacy'
 lua54 'yes'
-version '1.0.0'
+version '0.0.0'
 
 shared_scripts {
 	'@es_extended/imports.lua',
