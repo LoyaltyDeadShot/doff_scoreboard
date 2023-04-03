@@ -18,9 +18,9 @@
 :root {
     --black: rgb(33, 33, 33);
     --white: white;
-    --bg: rgba(12, 12, 12, 0.6);
-    --bg-top: rgba(12, 12, 12, 0.7);
-    --frame-color: rgb(0, 0, 0);
+    --bg: rgba(31, 31, 31, 0.7);
+    --bg-top: rgba(31, 31, 31, 0.8);
+    --frame-color: rgb(0, 64, 255);
     --list-background: rgba(12, 12, 12, 0.6);
     --heading-bg: rgba(0, 64, 255, 0.6);
     --radius: 7px;
