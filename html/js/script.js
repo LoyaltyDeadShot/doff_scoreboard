@@ -9,3 +9,20 @@
 // | $$$$$$$|  $$$$$$| $$     | $$            |  $$$$$$|  $$$$$$|  $$$$$$| $$     |  $$$$$$| $$$$$$$|  $$$$$$|  $$$$$$| $$     |  $$$$$$$
 // |_______/ \______/|__/     |__/             \______/ \_______/\______/|__/      \_______|_______/ \______/ \_______|__/      \_______/
 // 
+
+
+
+function pulsate(element) {
+    $(element || this).hide().animate({ opacity: 1 }, 7000, function() {
+        $(this).show().animate({ opacity: 1 }, 7000,  pulsate);
+    });
+}
+
+function pulsateoff(element) {
+    $(element || this).show().animate({ opacity: 1 }, 7000, function() {
+        $(this).hide().animate({ opacity: 1 }, 7000,  pulsateoff);
+    });
+}
+
+pulsate('.player-ping');
+pulsateoff('.player-lvl');

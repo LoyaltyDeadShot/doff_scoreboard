@@ -10,3 +10,151 @@
 |_______/ \______/|__/     |__/             \______/ \_______/\______/|__/      \_______|_______/ \______/ \_______|__/      \_______/
 
 */
+
+/* MAX: 154 PLAYER SHOW UP */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --black: rgb(33, 33, 33);
+    --white: white;
+    --bg: rgba(12, 12, 12, 0.6);
+    --bg-top: rgba(12, 12, 12, 0.7);
+    --frame-color: rgb(0, 0, 0);
+    --list-background: rgba(12, 12, 12, 0.6);
+    --heading-bg: rgba(0, 64, 255, 0.6);
+    --radius: 7px;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: url('../testbg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-frame {
+    background-color: var(--bg);
+    position: absolute;
+    width: 1600px;
+    min-height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-top: 7px solid var(--frame-color);
+    border-radius: var(--radius);
+    padding: 15px;
+}
+
+.main-frame h1 {
+    font-size: 19px;
+    color: var(--white);
+}
+
+.player-list,
+.heading-line {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    align-content:flex-start;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.player-item {
+    display: flex;
+    width: 12.23%;
+    margin-left: 0.4%;
+    margin-right: 0.4%;
+    font-size: 12px;
+    height: auto;
+    margin-bottom: 9px;
+    height: 20px;
+    background-color: var(--list-background);
+    padding: 6px 10px;
+    color: var(--white);
+    vertical-align: middle;
+    justify-content: center;
+    border-radius: var(--radius);
+    height: auto;
+}
+
+.heading-line .player-item {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.player-item * {
+    vertical-align: middle;
+    justify-content: center;
+}
+
+/* 27 char */
+.player-item .player-name.extra-long {
+    font-size: 9px;
+    line-height: 16px;
+}
+
+.heading-line .player-item {
+    background-color: var(--heading-bg);
+}
+
+.player-item .player-id {
+    width: 22px;
+    margin-right: auto;
+    text-align: center;
+}
+
+.player-item .player-name {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.player-list .player-item .player-lvl,
+.heading-line .player-item .player-lvl-info {
+    width: 35px;
+    text-align: center;
+    margin-left: auto;
+}
+
+
+.heading-line .player-item .player-lvl-info {
+    width: 70px;
+}
+
+
+.player-item .player-ping,
+.player-list .player-item .player-lvl {
+    width: 41px;
+    text-align: center;
+    margin-left: auto;
+}
+
+.other-info {
+    width: 90%;
+    height: 50px;
+    background-color: var(--bg-top);
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: var(--radius);
+    border-top: 7px solid var(--frame-color);
+}
+
+.other-info {
+    display: flex;
+    padding: 0 15px;
+}
+
+.other-info .left-side {
+    margin-right: auto;
+}
+
+.other-info .right-side {
+    margin-left: auto;
+}

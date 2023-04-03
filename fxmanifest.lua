@@ -26,6 +26,8 @@ ui_page 'html/index.html'
 
 files {
 	'html/index.html',
+	'html/jquery/jquery-3.6.1.min.js',
+	'html/jquery/jquery-ui.min.js',
 	'html/js/script.js',
 	'html/css/style.css',
 }
