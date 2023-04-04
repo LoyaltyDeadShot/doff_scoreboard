@@ -28,7 +28,6 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    background: url('../testbg.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -37,7 +36,7 @@ body {
     background-color: var(--bg);
     position: absolute;
     width: 1600px;
-    min-height: 500px;
+    min-height: 300px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -60,6 +59,11 @@ body {
     align-content:flex-start;
     margin-left: auto;
     margin-right: auto;
+}
+
+.player-list {
+    max-height: 500px;
+    overflow-x: hidden;
 }
 
 
@@ -136,7 +140,7 @@ body {
 
 .other-info {
     width: 90%;
-    height: 50px;
+    min-height: 50px;
     background-color: var(--bg-top);
     position: absolute;
     top: -70px;
@@ -153,8 +157,159 @@ body {
 
 .other-info .left-side {
     margin-right: auto;
+    display: flex;
+    width: 40%;
+    text-align: left;
+    align-items: center;
 }
 
 .other-info .right-side {
     margin-left: auto;
+    display: flex;
+    width: 40%;
+    text-align: right;
+    align-items: center;
+}
+
+.other-info .right-side div:first-child{
+    margin-left: auto;
+}
+
+.job-box {
+    display: flex;
+    margin-right: 8px;
+    align-items: center;
+}
+
+.job-box .on .not-avaliable {
+    display: none;
+}
+
+.job-box .off .avaliable {
+    display: none;
+}
+
+.job-box .avaliable,
+.job-box .not-avaliable {
+    width: 20px !important;
+}
+
+.bottom-info {
+    width: 40%;
+    min-height: 50px;
+    background-color: var(--bg-top);
+    position: absolute;
+    bottom: -63px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: var(--radius);
+    border-bottom: 7px solid var(--frame-color);
+    text-align: center;
+}
+
+/* CUSTOM SCROLLBAR */
+
+::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+}
+::-webkit-scrollbar
+{
+    height: 3px;
+	width: 3px;
+}
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--frame-color);
+}
+
+
+@media screen and (min-width: 3160px) {
+    .main-frame {
+        width: 3000px;
+    }
+    .player-item {
+        width: 12.81%;
+        font-size: 20px;
+    }
+    .player-item .player-ping, .player-list .player-item .player-lvl {
+        width: 72px;
+    }
+    .heading-line .player-item .player-lvl-info {
+        width: 110px;
+    }
+    .player-item .player-name.extra-long {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .player-item .player-id {
+        width: 41px;
+    }
+    .main-frame h1 {
+        font-size: 34px;
+    }
+    .other-info {
+        font-size: 25px;
+        top: -115px;
+    }
+    .bottom-info {
+        bottom: -108px;
+    }
+}
+
+@media screen and (min-width: 2160px) and (max-width: 3159px) {
+    .main-frame {
+        width: 2100px;
+    }
+    .player-item {
+        width: 12.53%;
+        font-size: 16px;
+    }
+    .player-item .player-ping, .player-list .player-item .player-lvl {
+        width: 55px;
+    }
+    .heading-line .player-item .player-lvl-info {
+        width: 87px;
+    }
+    .player-item .player-name.extra-long {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .player-item .player-id {
+        width: 32px;
+    }
+    .main-frame h1 {
+        font-size: 29px;
+    }
+    .other-info {
+        font-size: 22px;
+        top: -100px;
+    }
+    .bottom-info {
+        bottom: -93px;
+    }
+}
+
+@media screen and (max-width: 1659px) and (min-width: 1401px) {
+    .main-frame {
+        width: 1350px;
+    }
+    .heading-line .player-item:nth-child(6) {
+        display: none;
+    }
+    .player-item {
+        width: 14.38%;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .main-frame {
+        width: 1100px;
+    }
+    .heading-line .player-item:nth-child(6),
+    .heading-line .player-item:nth-child(5) {
+        display: none;
+    }
+    .player-item {
+        width: 17.38%;
+    }
 }

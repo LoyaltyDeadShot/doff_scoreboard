@@ -26,3 +26,5 @@ function pulsateoff(element) {
 
 pulsate('.player-ping');
 pulsateoff('.player-lvl');
+
+// $('.player-list').verticalLoop() 
