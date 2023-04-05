@@ -19,8 +19,8 @@
         <title>Doff Scoreboard</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
-    <body style="display: none;">
-        <div class="main-frame" style="display: none;">
+    <body style="display: none;"> <!-- style="display: none;" -->
+        <div class="main-frame" style="display: none;"> <!-- style="display: none;" -->
             <div class="bottom-info">
                 <h1><span id="currentplayer">100</span> / <span id="maxplayer">150</span> player | Play time: <span id="playtime">00:00</span> | Up time: <span id="uptime">00:00</span></h1>
             </div>
@@ -28,7 +28,7 @@
                 <div class="left-side">
                     <!-- JOB BOX START -->
                     <div class="job-box">
-                        <div class="off" id="police">
+                        <div class="on" id="police">
                             <span>👮</span><span class="avaliable">✔️</span><span class="not-avaliable">❌</span>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                     <!-- JOB BOX END -->
                     <!-- JOB BOX START -->
                     <div class="job-box">
-                        <div class="off" id="ambulance">
+                        <div class="on" id="ambulance">
                             <span>🚑</span><span class="avaliable">✔️</span><span class="not-avaliable">❌</span>
                         </div>
                     </div>
@@ -56,19 +56,12 @@
                     <!-- JOB BOX END -->
                 </div>
                 <div class="center-content">
-                    <h1>Your Server Name</h1>
+                    <h1 id="server-name">Your Server Name</h1>
                 </div>
                 <div class="right-side">
                     <!-- JOB BOX START -->
                     <div class="job-box robbery-edit">
-                        <div class="on" id="admins">
-                            <span>🦸</span><span class="avaliable">✔️</span><span class="not-avaliable">❌</span>
-                        </div>
-                    </div>
-                    <!-- JOB BOX END -->
-                    <!-- JOB BOX START -->
-                    <div class="job-box robbery-edit">
-                        <div class="off" id="bank">
+                        <div class="on" id="bank">
                             <span>🏦</span><span class="avaliable">✔️</span><span class="not-avaliable">❌</span>
                         </div>
                     </div>
@@ -122,9 +115,9 @@
             <div class="player-list">
                 <div class="player-item">
                     <div class="player-id">999</div>
-                    <div class="player-name extra-long">twitch.tv/darocziofficial32asdfg</div>
+                    <div class="player-name extra-long">twitch.tv</div>
                     <div class="player-lvl">lvl 813</div>
-                    <div class="player-ping">299 ms</div>
+                    <div class="player-ping">299 <span>ms</span></div>
                 </div>
                 <div class="player-item">
                     <div class="player-id">2</div>
@@ -153,6 +146,7 @@
                 
             </div>
         </div>
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
         <script src="jquery/jquery-3.6.1.min.js"></script>
         <script src="jquery/jquery-ui.min.js"></script>
         <script src="js/script.js"></script>

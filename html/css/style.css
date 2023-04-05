@@ -90,7 +90,7 @@ body {
     font-weight: bold;
 }
 
-.player-item * {
+.player-item *:not(span) {
     vertical-align: middle;
     justify-content: center;
 }
