@@ -55,7 +55,11 @@ function UpdatePlayerTable(connectedPlayers)
 	end
 
 	for k,v in pairs(connectedPlayers) do
-		table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, 0, v.ping))
+		if #v.name < 26 then		
+			table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, 0, v.ping))
+		else
+			table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name extra-long">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, 0, v.ping))
+		end
 		players = players + 1
 
 		for l,p in pairs(Config.jobList) do
@@ -81,8 +85,6 @@ function UpdatePlayerTable(connectedPlayers)
 		mbank = Config.minimumBank
 	})
 
-	-- Wait(1000)
-	-- print('Érték: ' .. setupStatus)
 	if setupStatus == false then
 		StarterSetup()
 		print('Bement az if ágba')

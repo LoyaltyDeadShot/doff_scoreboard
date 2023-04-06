@@ -52,7 +52,11 @@ function AddPlayerToScoreboard(xPlayer, update)
 	connectedPlayers[playerId] = {}
 	connectedPlayers[playerId].ping = GetPlayerPing(playerId)
 	connectedPlayers[playerId].playerId = playerId
-	connectedPlayers[playerId].name = Sanitize(xPlayer.getName())
+    if Config.rpName == true then
+        connectedPlayers[playerId].name = Sanitize(xPlayer.getName())
+    else
+        connectedPlayers[playerId].name = Sanitize(GetPlayerName(playerId))
+    end
 	connectedPlayers[playerId].job = xPlayer.job.name
 
 	if update then

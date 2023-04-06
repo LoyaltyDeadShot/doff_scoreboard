@@ -17,6 +17,7 @@ Config.systemLocal                  = "en"                          -- Set your 
 Config.serverName                   = "Example Server Name"         -- Set your server name here
 Config.keymap                       = "F10"                         -- Set the scoreboard action button with keymap easily
 Config.pingRate                     = 15000                         -- Set ping/lvl transition time in ms (recommended 15000)
+Config.rpName                       = false                         -- True = IC Name | false = steam name | Max supported name length is 32 char
 
 Config.backgroundColor              = "rgba(31, 31, 31, 0.7)"       -- Main background color. Formats: rgb, rgba, hex, hsl
 Config.backgroundTopColor           = "rgba(31, 31, 31, 0.8)"       -- Top section (jobs, server name, etc.) background color. Formats: rgb, rgba, hex, hsl
