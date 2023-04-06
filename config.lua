@@ -25,7 +25,7 @@ Config.listElementBackgroundColor   = "rgba(12, 12, 12, 0.6)"       -- Player li
 Config.headingBackgroundColor       = "rgba(0, 64, 255, 0.6)"       -- Above the player list (heading --> id, name, lvl/ms) background color. Formats: rgb, rgba, hex, hsl
 Config.globalRadius                 = "7px"                         -- Global radius size. Formats: px or percentage (%)
 
-Config.shopRobbery                  = false                          -- You can turn on/off shop robbery status
+Config.shopRobbery                  = true                          -- You can turn on/off shop robbery status
 Config.minimumShop                  = 1                             -- Minimum police officer number for turn shop robbery status on
 
 Config.bankRobbery                  = true                          -- You can turn on/off bank robbery status
@@ -37,7 +37,7 @@ Config.jobList = {                                                  -- Set your 
         emoji = "👮"                                                -- Job emoji
     },
     ["sheriff"] = {
-        align = "right",
+        align = "left",
         emoji = "🤠"
     },
     ["ambulance"] = {
@@ -45,7 +45,7 @@ Config.jobList = {                                                  -- Set your 
         emoji = "🚑"
     },
     ["mechanic"] = {
-        align = "right",
+        align = "left",
         emoji = "👨‍🔧"
     },
 }

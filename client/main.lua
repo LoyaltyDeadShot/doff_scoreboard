@@ -14,8 +14,10 @@ ESX = nil
 ESX = exports["es_extended"]:getSharedObject()
 
 local showPlayerId, isScoreboardActive = true, false
+local setupStatus = false
 
 Citizen.CreateThread(function()
+	Citizen.Wait(1000)
 	ESX.TriggerServerCallback('doff_scoreboard:getConnectedPlayers', function(connectedPlayers, maxPlayers)
 		UpdatePlayerTable(connectedPlayers)
 
@@ -26,7 +28,6 @@ Citizen.CreateThread(function()
 			playTime = '00h 00m'
 		})
 	end)
-	Citizen.Wait(5000)
 end)
 
 RegisterNetEvent('doff_scoreboard:updateConnectedPlayers')
@@ -80,13 +81,14 @@ function UpdatePlayerTable(connectedPlayers)
 		mbank = Config.minimumBank
 	})
 
+	-- Wait(1000)
+	-- print('Érték: ' .. setupStatus)
 	if setupStatus == false then
 		StarterSetup()
+		print('Bement az if ágba')
 		setupStatus = true
 	end
 end
-
-local setupStatus = false
 
 function StarterSetup() 
 	SendNUIMessage({
