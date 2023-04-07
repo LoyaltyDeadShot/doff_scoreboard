@@ -16,7 +16,7 @@ Config                              = {}                            -- Initializ
 Config.systemLocal                  = "en"                          -- Set your language. List of languages: hu, en, de
 Config.serverName                   = "Example Server Name"         -- Set your server name here
 Config.keymap                       = "F10"                         -- Set the scoreboard action button with keymap easily
-Config.pingRate                     = 15000                         -- Set ping/lvl transition time in ms (recommended 15000)
+Config.pingRefreshTime              = 15000                         -- Set ping/lvl transition time in ms (recommended 15000)
 Config.rpName                       = false                         -- True = IC Name | false = steam name | Max supported name length is 32 char
 
 Config.backgroundColor              = "rgba(31, 31, 31, 0.7)"       -- Main background color. Formats: rgb, rgba, hex, hsl
@@ -31,6 +31,9 @@ Config.minimumShop                  = 1                             -- Minimum p
 
 Config.bankRobbery                  = true                          -- You can turn on/off bank robbery status
 Config.minimumBank                  = 2                             -- Minimum police officer number for turn bank robbery status on
+
+Config.lvlDivider                   = 1000                          -- Example: 8000ms played time = lvl 8
+Config.maxLvl                       = 999                           -- Frontend doesn't support above lvl 999
 
 Config.jobList = {                                                  -- Set your job list for jobs status
     ["police"] = {                                                  -- Job name
@@ -50,6 +53,3 @@ Config.jobList = {                                                  -- Set your 
         emoji = "👨‍🔧"
     },
 }
-
-Config.lvlDivider = 1000                                             -- Example: 8000ms played time = lvl 8
-Config.maxLvl = 999                                                  -- Frontend doesn't support above lvl 999

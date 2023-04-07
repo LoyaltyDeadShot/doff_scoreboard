@@ -56,7 +56,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(Config.pingRate)
+		Citizen.Wait(Config.pingRefreshTime)
 		UpdatePing()
 	end
 end)
