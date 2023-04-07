@@ -64,10 +64,11 @@ function UpdatePlayerTable(connectedPlayers)
 	end
 
 	for k,v in pairs(connectedPlayers) do
-		local lvl = 1
-		if v.uptime > 0 then
-			lvl = 2
+		local lvl = math.floor((v.uptime / Config.lvlDivider))
+		if lvl > Config.maxLvl then
+			lvl = Config.maxLvl
 		end
+		
 		if #v.name < 26 then		
 			table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, lvl, v.ping))
 		else

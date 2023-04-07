@@ -50,3 +50,6 @@ Config.jobList = {                                                  -- Set your 
         emoji = "👨‍🔧"
     },
 }
+
+Config.lvlDivider = 1000                                             -- Example: 8000ms played time = lvl 8
+Config.maxLvl = 999                                                  -- Frontend doesn't support above lvl 999

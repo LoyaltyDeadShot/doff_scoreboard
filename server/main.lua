@@ -48,9 +48,9 @@ AddEventHandler('esx:playerLoaded', function(source, playerId, xPlayer)
 	AddPlayerToScoreboard(xPlayer, true)
 end)
 
-AddEventHandler('esx:playerDropped', function(source, playerId)
+AddEventHandler('esx:playerDropped', function(playerId)
 	connectedPlayers[playerId] = nil
-	dropPlayer(source, playerId)
+	dropPlayer(playerId)
 	TriggerClientEvent('doff_scoreboard:updateConnectedPlayers', -1, connectedPlayers)
 end)
 
@@ -76,7 +76,7 @@ function AddPlayerToScoreboard(xPlayer, update)
 	connectedPlayers[playerId].ping = GetPlayerPing(playerId)
 	connectedPlayers[playerId].playerId = playerId
 	connectedPlayers[playerId].uptime = playersDataLevels[identifier]
-	
+
     if Config.rpName == true then
         connectedPlayers[playerId].name = Sanitize(xPlayer.getName())
     else
