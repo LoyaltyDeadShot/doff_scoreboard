@@ -13,6 +13,19 @@
 ESX = nil
 ESX = exports["es_extended"]:getSharedObject()
 local connectedPlayers, maxPlayers = {}, GetConvarInt('sv_maxclients', 32)
+local playersData = {}
+local playersDataLogged = {}
+local playersDataActuall = {}
+local playersDataLevels = {}
+
+MySQL.ready(function()
+    MySQL.Async.fetchAll('SELECT * FROM users', {}, function(result)	
+        for i=1, #result, 1 do
+            playersData[result[i].identifier] = result[i].time
+            playersDataLogged[result[i].identifier] = result[i].login
+		end
+    end)
+end)
 
 ESX.RegisterServerCallback('doff_scoreboard:getConnectedPlayers', function(source, cb)
 	cb(connectedPlayers, maxPlayers)
@@ -23,12 +36,21 @@ AddEventHandler('esx:setJob', function(playerId, job, lastJob)
 	TriggerClientEvent('doff_scoreboard:updateConnectedPlayers', -1, connectedPlayers)
 end)
 
-AddEventHandler('esx:playerLoaded', function(playerId, xPlayer)
+AddEventHandler('esx:playerLoaded', function(source, playerId, xPlayer)
+	local xPlayer = ESX.GetPlayerFromId(source)
+    local identifier = xPlayer.identifier
+	local uptime = playersData[identifier]
+	print ("Idő: " .. uptime)
+	playersDataLevels[identifier] = uptime
+	uptime = SecondsToClock(uptime)
+	TriggerClientEvent('doff_scoreboard:setUptime', source, uptime)
+
 	AddPlayerToScoreboard(xPlayer, true)
 end)
 
-AddEventHandler('esx:playerDropped', function(playerId)
+AddEventHandler('esx:playerDropped', function(source, playerId)
 	connectedPlayers[playerId] = nil
+	dropPlayer(source, playerId)
 	TriggerClientEvent('doff_scoreboard:updateConnectedPlayers', -1, connectedPlayers)
 end)
 
@@ -48,10 +70,13 @@ end)
 
 function AddPlayerToScoreboard(xPlayer, update)
 	local playerId = xPlayer.source
+	local identifier = xPlayer.identifier
 
 	connectedPlayers[playerId] = {}
 	connectedPlayers[playerId].ping = GetPlayerPing(playerId)
 	connectedPlayers[playerId].playerId = playerId
+	connectedPlayers[playerId].uptime = playersDataLevels[identifier]
+	
     if Config.rpName == true then
         connectedPlayers[playerId].name = Sanitize(xPlayer.getName())
     else
@@ -104,3 +129,67 @@ function Sanitize(str)
 			return ' '..('&nbsp;'):rep(#s-1)
 		end)
 end
+
+function SecondsToClock(seconds)
+    if seconds ~= nil then
+        local seconds = tonumber(seconds)
+
+        if seconds <= 0 then
+            return "00h 00m";
+        else
+            hours = string.format("%02.f", math.floor(seconds/3600));
+            mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)));
+            -- secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60));
+            return hours.."h "..mins.."m"--..":"..secs
+        end
+    end
+end
+
+function dropPlayer(source)
+	local xPlayer = ESX.GetPlayerFromId(source)
+    local identifier = xPlayer.identifier
+    local actuallTime = os.time()
+    local name = GetPlayerName(source)
+	print("Object #1" .. json.encode(playersData))
+	print("Object #2" .. json.encode(playersDataActuall))
+    if(playersData[identifier] ~= nil and playersDataActuall[identifier] ~= nil) then
+        local time = tonumber(actuallTime - playersDataActuall[identifier])
+        local timeFormatted = SecondsToClock(time)
+        local timeAll = time + playersData[identifier]
+        local timeAllFormatted = SecondsToClock(timeAll)
+
+        MySQL.Async.execute('UPDATE users SET time = @time WHERE identifier = @identifier',
+            {['time'] = timeAll, ['identifier'] = identifier},
+            function(affectedRows)
+            --   print('Drop logged')
+            end
+        )
+        playersData[identifier] = timeAll
+    end
+end
+
+
+RegisterNetEvent('doff_scoreboard:loggedIn')
+AddEventHandler('doff_scoreboard:loggedIn', function(playerName)
+	local _source = source	
+    local _playerName = playerName
+	local xPlayer = ESX.GetPlayerFromId(_source)
+    local identifier = xPlayer.identifier
+    local actuallTime = os.time()
+   
+    if playersData[identifier] ~= nil then
+        playersDataActuall[identifier] = actuallTime
+        playersDataLogged[identifier] = tonumber(playersDataLogged[identifier]) + 1
+        local totaltimeFormatted = SecondsToClock(playersData[identifier])
+        MySQL.Async.execute('UPDATE users SET login = login + 1 WHERE identifier = @identifier',
+            {['identifier'] = identifier},
+            function(affectedRows)
+            --   print('Updated login')
+            end
+        )
+    end
+end)
+
+RegisterCommand('time2', function(source)
+	dropPlayer(source)
+end, false)

@@ -88,6 +88,10 @@ $(function() {
 				$('.main-frame').fadeIn(800);
 				break;
 
+			case 'uptime':
+                $('#uptime').html(event.data.uptime);
+				break;
+
             case 'close':
                 $('body').fadeOut();
                 $('.main-frame').fadeOut(800);

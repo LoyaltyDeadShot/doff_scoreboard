@@ -24,7 +24,7 @@ Citizen.CreateThread(function()
 		SendNUIMessage({
 			action = 'updateServerInfo',
 			maxPlayers = maxPlayers,
-			uptime = 'unknown',
+			uptime = "Unkown",
 			playTime = '00h 00m'
 		})
 	end)
@@ -33,6 +33,15 @@ end)
 RegisterNetEvent('doff_scoreboard:updateConnectedPlayers')
 AddEventHandler('doff_scoreboard:updateConnectedPlayers', function(connectedPlayers)
 	UpdatePlayerTable(connectedPlayers)
+end)
+
+
+RegisterNetEvent('doff_scoreboard:setUptime')
+AddEventHandler('doff_scoreboard:setUptime', function(uptime)
+	SendNUIMessage({
+		action = 'uptime',
+		uptime = uptime
+	})
 end)
 
 RegisterNetEvent('doff_scoreboard:updatePing')
@@ -55,10 +64,14 @@ function UpdatePlayerTable(connectedPlayers)
 	end
 
 	for k,v in pairs(connectedPlayers) do
+		local lvl = 1
+		if v.uptime > 0 then
+			lvl = 2
+		end
 		if #v.name < 26 then		
-			table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, 0, v.ping))
+			table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, lvl, v.ping))
 		else
-			table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name extra-long">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, 0, v.ping))
+			table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name extra-long">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, lvl, v.ping))
 		end
 		players = players + 1
 
@@ -148,5 +161,14 @@ Citizen.CreateThread(function()
 			action = 'updateServerInfo',
 			playTime = string.format("%02dh %02dm", playHour, playMinute)
 		})
+	end
+end)
+
+local firstSpawn = false
+
+AddEventHandler('esx:playerLoaded', function()
+	if firstSpawn == false then
+		TriggerServerEvent('doff_scoreboard:loggedIn', GetPlayerName(PlayerId()))
+		firstSpawn = true
 	end
 end)
