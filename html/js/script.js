@@ -147,6 +147,14 @@ $(function() {
 				setPingColor();
 				break;
 
+            case 'langSetup':
+                    $('#player-lang').html(event.data.playerlang);
+                    $('#playtime-lang').html(event.data.playtimelang);
+                    $('#uptime-lang').html(event.data.uptimelang);
+                    $('.heading-name').html(event.data.playernamelang);
+                    $('.player-lvl-info').html(event.data.lvlpinglang);
+                break;
+
 			case 'updateServerInfo':
 				if (event.data.maxPlayers) {
 					$('#maxplayer').html(event.data.maxPlayers);

@@ -68,7 +68,7 @@ function UpdatePlayerTable(connectedPlayers)
 		if lvl > Config.maxLvl then
 			lvl = Config.maxLvl
 		end
-		
+
 		if #v.name < 26 then		
 			table.insert(formattedPlayerList, ('<div class="player-item"><div class="player-id">%s</div><div class="player-name">%s</div><div class="player-lvl" style="display: none;">lvl %s</div><div class="player-ping">%s ms</div></div>'):format(v.playerId, v.name, lvl, v.ping))
 		else
@@ -121,6 +121,15 @@ function StarterSetup()
 		mshop = Config.minimumShop,
 		bank = Config.bankRobbery,
 		mbank = Config.minimumBank
+	})
+
+	SendNUIMessage({
+		action = 'langSetup',
+		playerlang = Config.playerLang,
+		playtimelang = Config.playerTimeLang,
+		uptimelang = Config.uptimeLang,
+		playernamelang = Config.playerNameLang,
+		lvlpinglang = Config.lvlPingLang
 	})
 end
 

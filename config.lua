@@ -13,7 +13,14 @@
 
 Config                              = {}                            -- Initialize Config table
 
-Config.systemLocal                  = "en"                          -- Set your language. List of languages: hu, en, de
+-- LANGUAGE SETTINGS
+Config.playerLang                   = "player"                      -- Default value: player
+Config.playerTimeLang               = "Play time"                   -- Default value: Play time
+Config.uptimeLang                   = "Up time"                     -- Default value: Up time
+Config.playerNameLang               = "Name"                        -- Default value: Name
+Config.lvlPingLang                  = "Level / Ping"                -- Default value: Level / Ping
+-- LANGUAGE SETTINGS
+
 Config.serverName                   = "Example Server Name"         -- Set your server name here
 Config.keymap                       = "F10"                         -- Set the scoreboard action button with keymap easily
 Config.pingRefreshTime              = 15000                         -- Set ping/lvl transition time in ms (recommended 15000)
