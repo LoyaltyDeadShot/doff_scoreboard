@@ -1,4 +1,4 @@
-# doff_scoreboard
+# DoFF Scoreboard
 FiveM Scoreboard for ESX Legacy
 
 # What is that ?
