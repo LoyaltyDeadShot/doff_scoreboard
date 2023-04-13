@@ -33,3 +33,10 @@ files {
 }
 
 dependency 'es_extended'
+
+escrow_ignore {
+	'config.lua',
+	'uptimedb.sql',
+	'README.md',
+	'fxmanifest.lua'
+}
