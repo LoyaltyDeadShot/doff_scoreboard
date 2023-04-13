@@ -11,7 +11,25 @@
 -- 
 
 ESX = nil
-ESX = exports["es_extended"]:getSharedObject()
+
+if Config.legacy then
+	ESX = exports["es_extended"]:getSharedObject()
+else
+	Citizen.CreateThread(function()
+		while ESX == nil do
+			TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+			Citizen.Wait(0)
+		end
+	
+		while ESX.GetPlayerData().job == nil do
+			Citizen.Wait(10)
+		end
+		ESX.PlayerData = ESX.GetPlayerData()
+	
+	end)
+end
+
+
 local connectedPlayers, maxPlayers = {}, GetConvarInt('sv_maxclients', 32)
 local playersData = {}
 local playersDataLogged = {}

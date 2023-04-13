@@ -13,6 +13,8 @@
 
 Config                              = {}                            -- Initialize Config table
 
+Config.legacy                       = true                          -- True = ESX Legacy | False = Older ESX Core
+
 -- LANGUAGE SETTINGS
 Config.playerLang                   = "player"                      -- Default value: player
 Config.playerTimeLang               = "Play time"                   -- Default value: Play time
@@ -47,16 +49,16 @@ Config.jobList = {                                                  -- Set your 
         align = "left",                                             -- Align in scoreboard (left or right)
         emoji = "👮"                                                -- Job emoji
     },
-    ["sheriff"] = {
-        align = "left",
-        emoji = "🤠"
+    ["sheriff"] = {                                                 -- Job name
+        align = "left",                                             -- Align in scoreboard (left or right)
+        emoji = "🤠"                                                -- Job emoji
     },
-    ["ambulance"] = {
-        align = "left",
-        emoji = "🚑"
+    ["ambulance"] = {                                               -- Job name
+        align = "left",                                             -- Align in scoreboard (left or right)
+        emoji = "🚑"                                                -- Job emoji
     },
-    ["mechanic"] = {
-        align = "left",
-        emoji = "👨‍🔧"
+    ["mechanic"] = {                                                -- Job name
+        align = "left",                                             -- Align in scoreboard (left or right)
+        emoji = "👨‍🔧"                                                -- Job emoji
     },
 }
